@@ -17,7 +17,7 @@
     helm-gtags
     helm-projectile
     helm-swoop
-    ;; function-args
+    function-args
     clean-aindent-mode
     comment-dwim-2
     dtrt-indent
