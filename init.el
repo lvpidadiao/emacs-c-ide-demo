@@ -1,6 +1,8 @@
 (require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;(add-to-list 'package-archives
+;	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+                         ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 (package-initialize)
 
 (setq gc-cons-threshold 100000000)
