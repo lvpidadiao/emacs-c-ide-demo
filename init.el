@@ -67,10 +67,10 @@
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 (delete 'company-semantic company-backends)
-(define-key c-mode-map  [(tab)] 'company-complete)
-(define-key c++-mode-map  [(tab)] 'company-complete)
-;; (define-key c-mode-map  [(control tab)] 'company-complete)
-;; (define-key c++-mode-map  [(control tab)] 'company-complete)
+;;(define-key c-mode-map  [(tab)] 'company-complete)
+;;(define-key c++-mode-map  [(tab)] 'company-complete)
+(define-key c-mode-map  [(control tab)] 'company-complete)
+(define-key c++-mode-map  [(control tab)] 'company-complete)
 
 ;; company-c-headers
 (add-to-list 'company-backends 'company-c-headers)
@@ -90,7 +90,7 @@
 ;; “java”: The default style for java-mode (see below)
 ;; “user”: When you want to define your own style
 (setq
- c-default-style "linux" ;; set style to "linux"
+ c-default-style "java" ;; set style to "linux"
  )
 
 (global-set-key (kbd "RET") 'newline-and-indent)  ; automatically indent when press RET
@@ -165,10 +165,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(custom-safe-themes
+   (quote
+    ("eb07ee737bae7860ff12a4dbd2dcb9ff9712e517cfd6279fa74f04a17b6e1ba6" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 143 :width normal)))))
+
+
+;; turn off auto backup
+(setq make-backup-files nil)
