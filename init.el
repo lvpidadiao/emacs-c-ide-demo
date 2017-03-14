@@ -51,7 +51,7 @@
 
 (require 'setup-helm)
 (require 'setup-helm-gtags)
-;; (require 'setup-ggtags)
+;;(require 'setup-ggtags)
 (require 'setup-cedet)
 (require 'setup-editing)
 
@@ -69,11 +69,14 @@
 (delete 'company-semantic company-backends)
 ;;(define-key c-mode-map  [(tab)] 'company-complete)
 ;;(define-key c++-mode-map  [(tab)] 'company-complete)
-(define-key c-mode-map  [(control tab)] 'company-complete)
-(define-key c++-mode-map  [(control tab)] 'company-complete)
+(define-key c-mode-map  [(control tab)] 'company-clang)
+(define-key c++-mode-map  [(control tab)] 'company-clang)
 
 ;; company-c-headers
 (add-to-list 'company-backends 'company-c-headers)
+
+(delete 'company-clang company-backends)
+(add-to-list 'company-backends 'company-clang)
 
 ;; hs-minor-mode for folding source code
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
@@ -160,14 +163,21 @@
 
 ;; Package zygospore
 (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-clang-arguments (quote ("-I/usr/include/c++/5.4.0/" "-std=c++11")))
+ '(company-clang-executable "/usr/bin/clang++")
+ '(custom-enabled-themes (quote (seoul256)))
  '(custom-safe-themes
    (quote
-    ("eb07ee737bae7860ff12a4dbd2dcb9ff9712e517cfd6279fa74f04a17b6e1ba6" default))))
+    ("eb07ee737bae7860ff12a4dbd2dcb9ff9712e517cfd6279fa74f04a17b6e1ba6" default)))
+ '(flycheck-clang-include-path (quote ("/usr/include/c++/5.4.0/")))
+ '(flycheck-clang-language-standard "c++11"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
