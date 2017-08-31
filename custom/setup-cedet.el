@@ -1,9 +1,19 @@
 (require 'cc-mode)
 (require 'semantic)
+(require 'ede)
+
+
+(global-ede-mode)
 
 (global-semanticdb-minor-mode 1)
 (global-semantic-idle-scheduler-mode 1)
 (global-semantic-stickyfunc-mode 1)
+
+
+;; add include-path
+(semantic-add-system-include "/usr/include/boost" 'c++-mode)
+(semantic-add-system-include "/home/work/seastar" 'c++-mode)
+(semantic-add-system-include "/usr/include/c++/5.4.0" 'c++-mode)
 
 (semantic-mode 1)
 

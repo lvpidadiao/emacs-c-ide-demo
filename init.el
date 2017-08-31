@@ -49,37 +49,44 @@
 
 (add-to-list 'load-path "~/.emacs.d/custom")
 
+
 (require 'setup-helm)
-(require 'setup-helm-gtags)
-;;(require 'setup-ggtags)
+;;(require 'setup-helm-gtags)
+(require 'setup-ggtags)
 (require 'setup-cedet)
 (require 'setup-editing)
 
 (windmove-default-keybindings)
 
 ;; function-args
-;; (require 'function-args)
-;; (fa-config-default)
+(require 'function-args)
+(fa-config-default)
 ;; (define-key c-mode-map  [(tab)] 'company-complete)
 ;; (define-key c++-mode-map  [(tab)] 'company-complete)
 
 ;; company
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
-(delete 'company-semantic company-backends)
 ;;(define-key c-mode-map  [(tab)] 'company-complete)
 ;;(define-key c++-mode-map  [(tab)] 'company-complete)
 (define-key c-mode-map  [(control tab)] 'company-clang)
 (define-key c++-mode-map  [(control tab)] 'company-clang)
 
-;; company-c-headers
-(add-to-list 'company-backends 'company-c-headers)
+(global-set-key [(control tab)] 'company-complete)
 
-(delete 'company-clang company-backends)
+;; company-c-headers
+;;(add-to-list 'company-backends 'company-c-headers)
+
+;;(delete 'company-clang company-backends)
 (add-to-list 'company-backends 'company-clang)
 
 ;; hs-minor-mode for folding source code
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
+
+
+
+;; yasnippt
+(add-to-list 'yas-snippet-dirs "/home/techyc/ExternTool/yasnippet-snippets")
 
 ;; Available C style:
 ;; “gnu”: The default style for GNU projects
@@ -164,20 +171,26 @@
 ;; Package zygospore
 (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
 
+;; ;; following is the c++ programming environment.
+;; (custom-set-variables
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(company-clang-arguments
+;;    (quote
+;;     ("-I/usr/include/c++/5.4.0/" "-std=c++14")))
+;;  '(company-clang-executable "/usr/bin/clang")
+;;  '(custom-enabled-themes (quote (seoul256)))
+;;  '(custom-safe-themes
+;;    (quote
+;;     ("eb07ee737bae7860ff12a4dbd2dcb9ff9712e517cfd6279fa74f04a17b6e1ba6" default)))
+;;  '(flycheck-clang-include-path (quote ("/usr/include/c++/5.4.0/" "/home/work/seastar/"
+;;                                        )))
+;;  '(flycheck-clang-language-standard "c++14")
+;;  '(flycheck-gcc-include-path (quote ("/home/work/seastar/")))
+;;  '(flycheck-gcc-language-standard "c++14"))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-clang-arguments (quote ("-I/usr/include/c++/5.4.0/" "-std=c++11")))
- '(company-clang-executable "/usr/bin/clang++")
- '(custom-enabled-themes (quote (seoul256)))
- '(custom-safe-themes
-   (quote
-    ("eb07ee737bae7860ff12a4dbd2dcb9ff9712e517cfd6279fa74f04a17b6e1ba6" default)))
- '(flycheck-clang-include-path (quote ("/usr/include/c++/5.4.0/")))
- '(flycheck-clang-language-standard "c++11"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -188,3 +201,31 @@
 
 ;; turn off auto backup
 (setq make-backup-files nil)
+
+;; folloing is the c programming environment.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-clang-arguments
+   (quote
+    ("-I/home/work/yc_svn/src/lib/dpdk/src/x86_64-native-linuxapp-gcc/include" "-I/home/work/yc_svn/src/approute_daemon/" "-I/home/work/yc_svn/src/include/" "-I/home/work/yc_svn/src/include/ies/" "-I/home/work/yc_svn/src/include/ies/alos/linux/" "-I/home/work/yc_svn/src/include/ies/std/intel/")))
+ '(current-language-environment "UTF-8")
+ '(custom-enabled-themes (quote (rebecca)))
+ '(custom-safe-themes
+   (quote
+    ("d431bff071bfc4c300767f2a0b29b23c7994573f7c6b5ef4c77ed680e6f44dd0" "eb07ee737bae7860ff12a4dbd2dcb9ff9712e517cfd6279fa74f04a17b6e1ba6" default)))
+ '(flycheck-clang-include-path
+   (quote
+    ("/home/work/yc_svn/src/lib/dpdk/src/x86_64-native-linuxapp-gcc/include" "/home/work/yc_svn/src/approute_daemon" "/home/work/yc_svn/src/include/")))
+ '(flycheck-clang-warnings nil)
+ '(flycheck-gcc-include-path
+   (quote
+    ("/home/work/yc_svn/src/lib/dpdk/src/x86_64-native-linuxapp-gcc/include/" "/home/work/yc_svn/src/include/" "/home/work/yc_svn/src/include/ies/"
+     "/home/work/yc_svn/src/include/ies/std/intel/"
+     "/home/work/yc_svn/src/include/ies/platforms/libertyTrail"
+     "/home/work/yc_svn/src/include/ies/alos/"
+     "/home/work/yc_svn/src/include/ies/api/"
+     "/home/work/yc_svn/src/include/ies/common/"
+     "/home/work/yc_svn/src/approute_daemon/"))))
