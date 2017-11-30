@@ -202,6 +202,9 @@
 ;; turn off auto backup
 (setq make-backup-files nil)
 
+
+(setq workdir "-I/home/work/yc_svn/branches/sflagent_lenovo_dongde_v0/")
+
 ;; folloing is the c programming environment.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -210,22 +213,17 @@
  ;; If there is more than one, they won't work right.
  '(company-clang-arguments
    (quote
-    ("-I/home/work/yc_svn/src/lib/dpdk/src/x86_64-native-linuxapp-gcc/include" "-I/home/work/yc_svn/src/approute_daemon/" "-I/home/work/yc_svn/src/include/" "-I/home/work/yc_svn/src/include/ies/" "-I/home/work/yc_svn/src/include/ies/alos/linux/" "-I/home/work/yc_svn/src/include/ies/std/intel/")))
+    ("-std=c++11"
+     (concat workdir "src/include")
+     "-I/usr/local/include/x86_64-linux-gnu/" "-I/usr/local/include/")))
+ '(company-clang-executable "/usr/bin/clang++")
  '(current-language-environment "UTF-8")
  '(custom-enabled-themes (quote (rebecca)))
  '(custom-safe-themes
    (quote
     ("d431bff071bfc4c300767f2a0b29b23c7994573f7c6b5ef4c77ed680e6f44dd0" "eb07ee737bae7860ff12a4dbd2dcb9ff9712e517cfd6279fa74f04a17b6e1ba6" default)))
- '(flycheck-clang-include-path
-   (quote
-    ("/home/work/yc_svn/src/lib/dpdk/src/x86_64-native-linuxapp-gcc/include" "/home/work/yc_svn/src/approute_daemon" "/home/work/yc_svn/src/include/")))
+ '(flycheck-clang-include-path (quote ((concat workdir "src/include"))))
  '(flycheck-clang-warnings nil)
  '(flycheck-gcc-include-path
    (quote
-    ("/home/work/yc_svn/src/lib/dpdk/src/x86_64-native-linuxapp-gcc/include/" "/home/work/yc_svn/src/include/" "/home/work/yc_svn/src/include/ies/"
-     "/home/work/yc_svn/src/include/ies/std/intel/"
-     "/home/work/yc_svn/src/include/ies/platforms/libertyTrail"
-     "/home/work/yc_svn/src/include/ies/alos/"
-     "/home/work/yc_svn/src/include/ies/api/"
-     "/home/work/yc_svn/src/include/ies/common/"
-     "/home/work/yc_svn/src/approute_daemon/"))))
+    ("/home/work/yc_svn/src/lib/dpdk/src/x86_64-native-linuxapp-gcc/include/" "/home/work/yc_svn/src/include/" "/home/work/yc_svn/src/include/ies/" "/home/work/yc_svn/src/include/ies/std/intel/" "/home/work/yc_svn/src/include/ies/platforms/libertyTrail" "/home/work/yc_svn/src/include/ies/alos/" "/home/work/yc_svn/src/include/ies/api/" "/home/work/yc_svn/src/include/ies/common/" "/home/work/yc_svn/src/approute_daemon/"))))
